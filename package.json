@@ -1,6 +1,6 @@
 {
 	"name": "github-bookmark",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "A micro browser extension that saves a web page URL as a GitHub issue",
 	"main": "dist/index.js",
 	"module": "dist/index.cjs",
