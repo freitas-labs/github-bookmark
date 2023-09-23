@@ -20,5 +20,7 @@ jobs:
       - name: Create Release Pull Request or Publish
         id: changesets
         uses: changesets/action@v1
+        with:
+          publish: echo "batatas com enguias"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
