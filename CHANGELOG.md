@@ -1,5 +1,11 @@
 # github-bookmark
 
+## 0.0.4
+
+### Patch Changes
+
+- 534cf98: tttt
+
 ## 0.0.3
 
 ### Patch Changes
