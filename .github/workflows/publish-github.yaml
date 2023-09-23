@@ -21,6 +21,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: git tag v$(cat package.json | grep version | cut -d '"' -f 4) | echo "New tag: "
+          #publish: git tag v$(cat package.json | grep version | cut -d '"' -f 4) | echo "New tag: "
+          publish: ls
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
