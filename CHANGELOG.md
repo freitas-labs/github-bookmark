@@ -1,5 +1,11 @@
 # github-bookmark
 
+## 0.0.6
+
+### Patch Changes
+
+- baba2da: asdasdasd
+
 ## 0.0.5
 
 ### Patch Changes
