@@ -1,5 +1,11 @@
 # github-bookmark
 
+## 0.0.10
+
+### Patch Changes
+
+- b57f9b2: asdsad
+
 ## 0.0.9
 
 ### Patch Changes
