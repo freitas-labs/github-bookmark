@@ -21,6 +21,6 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: echo "batatas com enguias"
+          publish: git tag release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
