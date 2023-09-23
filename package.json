@@ -13,7 +13,9 @@
 		"docs": "typedoc",
 		"docs:publish": "typedoc && gh-pagez -d docs -t true",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
-		"format": "prettier --plugin-search-dir . --write ."
+		"format": "prettier --plugin-search-dir . --write .",
+		"release": "changeset",
+		"publish": "npm run build && changeset"
 	},
 	"repository": {
 		"type": "git",
