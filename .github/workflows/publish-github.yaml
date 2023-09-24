@@ -56,7 +56,7 @@ jobs:
                 });
 
                 console.log(`Id of the latest release is ${response.data.id} was found.`);
-                return ${response.data.id}
+                return response.data.id
               } catch (error) {
                 console.error('Failed to get Id of the latest release', error);
                 throw error;
