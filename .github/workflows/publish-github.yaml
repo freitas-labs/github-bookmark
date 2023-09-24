@@ -50,9 +50,9 @@ jobs:
           script: |
             async function getReleaseId() {
               try {
-                const response = await github.repos.releases.latest({
-                  owner: owner,
-                  repo: repo
+                const response = await github.repos.getLatestRelease({
+                  owner: ${{ github.repository_owner }},
+                  repo: ${{ github.repository }}
                 });
 
                 console.log(`Id of the latest release is ${response.data.id} was found.`);
