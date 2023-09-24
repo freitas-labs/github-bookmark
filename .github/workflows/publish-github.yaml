@@ -46,8 +46,8 @@ jobs:
         if: steps.zip-folder.outcome == 'success'
         uses: actions/upload-artifact@v1
         with:
-          name: my-artifact
-          path: ${{ github.workspace }}/result.zip
+          name: dist.zip
+          path: ${{ github.workspace }}/dist.zip
 
       - name: Upload Release Asset
         if: steps.zip-folder.outcome == 'success'
