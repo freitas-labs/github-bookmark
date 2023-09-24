@@ -50,7 +50,7 @@ jobs:
           script: |
             async function getReleaseId() {
               try {
-                const response = await github.repos.getLatestRelease({
+                const response = await github.rest.repos.getLatestRelease({
                   owner: ${{ github.repository_owner }},
                   repo: ${{ github.repository }}
                 });
