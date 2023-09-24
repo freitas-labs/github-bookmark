@@ -8,6 +8,10 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+
+    env:
+      release-asset-name: dist.zip
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -21,16 +25,16 @@ jobs:
       - name: Install npm
         run: npm install --frozen-lockfile
 
-      # - name: Create Release Pull Request or Publish
-      #   id: changesets
-      #   uses: changesets/action@v1
-      #   with:
-      #     publish: bash scripts/release.sh
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Release Pull Request or Publish
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: bash scripts/release.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build project
-        # if: steps.changesets.outputs.published == 'true'
+        if: steps.changesets.outputs.published == 'true'
         id: build-project
         run: npm run build
 
@@ -40,14 +44,7 @@ jobs:
         uses: vimtor/action-zip@v1
         with:
           files: dist
-          dest: dist.zip
-
-      - name: store Zip dist folder
-        if: steps.zip-folder.outcome == 'success'
-        uses: actions/upload-artifact@v1
-        with:
-          name: dist-action
-          path: ${{ github.workspace }}/dist.zip
+          dest: ${{ env.release-asset-name }}
 
       - name: Upload Release Asset
         if: steps.zip-folder.outcome == 'success'
@@ -56,7 +53,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const fs = require('fs');
-            
+
             async function getReleaseId() {
               try {
                 const response = await github.rest.repos.getLatestRelease({
@@ -79,8 +76,8 @@ jobs:
                   owner: '${{ github.repository_owner }}',
                   repo: '${{ github.event.repository.name }}',
                   release_id: release_id,
-                  name: 'dist.zip',
-                  data: await fs.readFileSync('${{ github.workspace }}/dist.zip')
+                  name: '${{ env.release-asset-name }}',
+                  data: await fs.readFileSync('${{ github.workspace }}/${{ env.release-asset-name }}')
                 });
 
                 console.log(`Uploaded asset to release ${release_id}.`);
