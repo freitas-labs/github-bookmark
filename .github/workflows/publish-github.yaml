@@ -29,13 +29,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Print outputs
-        uses: actions/github-script@v4
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            console.log(JSON.stringify(${{ steps.changesets.outputs }}, null, "\t"));
-
       - name: Build project
         if: steps.changesets.outputs.published == 'true'
         id: build-project
@@ -53,7 +46,7 @@ jobs:
         if: steps.zip-folder.outcome == 'success'
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             async function getReleaseId() {
               try {
