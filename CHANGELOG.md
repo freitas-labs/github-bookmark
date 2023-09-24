@@ -1,5 +1,11 @@
 # github-bookmark
 
+## 0.0.23
+
+### Patch Changes
+
+- 92e6a15: upload asset to release
+
 ## 0.0.22
 
 ### Patch Changes
