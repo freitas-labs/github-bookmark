@@ -1,5 +1,11 @@
 # github-bookmark
 
+## 0.0.17
+
+### Patch Changes
+
+- b093e2e: fix error
+
 ## 0.0.16
 
 ### Patch Changes
