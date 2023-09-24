@@ -33,14 +33,16 @@ jobs:
         run: |
           echo "${{ steps.changesets.outputs }}"
 
-      - name: Zip dist file
+      - name: Zip dist folder
+        id: zip-folder
         if: steps.changesets.outputs.published == 'true'
         uses: vimtor/action-zip@v1
         with:
           files: dist
           dest: dist.zip
 
-      - name: After Zipping dist file
+      - name: After Zipping dist folder
+        if: steps.zip-folder.outcome == 'success'
         uses: actions/upload-artifact@v1
         with:
           name: my-artifact
