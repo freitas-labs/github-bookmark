@@ -1,5 +1,11 @@
 # github-bookmark
 
+## 0.0.25
+
+### Patch Changes
+
+- 1c95fc1: upload asset to release
+
 ## 0.0.24
 
 ### Patch Changes
