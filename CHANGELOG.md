@@ -1,5 +1,11 @@
 # github-bookmark
 
+## 0.0.14
+
+### Patch Changes
+
+- a3daa55: zip dist folder
+
 ## 0.0.13
 
 ### Patch Changes
