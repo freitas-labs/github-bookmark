@@ -78,7 +78,7 @@ jobs:
                   repo: '${{ github.event.repository.name }}',
                   release_id: release_id,
                   name: 'dist.zip',
-                  data: await fs.readFileSync('${{ github.workspace }}/dist.zip)'
+                  data: await fs.readFileSync('${{ github.workspace }}/dist.zip')
                 });
 
                 console.log(`Uploaded asset to release ${release_id}.`);
