@@ -42,6 +42,13 @@ jobs:
           files: dist
           dest: dist.zip
 
+      - name: store Zip dist folder
+        if: steps.zip-folder.outcome == 'success'
+        uses: actions/upload-artifact@v1
+        with:
+          name: my-artifact
+          path: ${{ github.workspace }}/result.zip
+
       - name: Upload Release Asset
         if: steps.zip-folder.outcome == 'success'
         uses: actions/github-script@v6
