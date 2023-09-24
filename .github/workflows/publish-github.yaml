@@ -68,9 +68,9 @@ jobs:
               try {
                 const response = await github.rest.repos.uploadReleaseAsset({
                   owner: '${{ github.repository_owner }}',
-                  repo: '${{ github.event.repository.name }}'
+                  repo: '${{ github.event.repository.name }}',
                   release_id: release_id,
-                  name: 'dist.zip'
+                  name: 'dist.zip',
                   data: ${{ github.workspace }}/dist.zip
                 });
 
@@ -82,5 +82,5 @@ jobs:
             }
 
             let release_id = await getReleaseId();
-            console.log("Release id: $release_id")
+            console.log(`Release id: $release_id`)
             await uploadReleaseAsset(release_id);
