@@ -55,6 +55,8 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
+            const fs = require('fs');
+            
             async function getReleaseId() {
               try {
                 const response = await github.rest.repos.getLatestRelease({
