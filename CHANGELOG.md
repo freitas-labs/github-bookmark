@@ -1,5 +1,11 @@
 # github-bookmark
 
+## 0.0.16
+
+### Patch Changes
+
+- 7edb2bc: get id of latest release
+
 ## 0.0.15
 
 ### Patch Changes
