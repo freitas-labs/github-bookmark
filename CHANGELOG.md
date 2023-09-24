@@ -1,5 +1,11 @@
 # github-bookmark
 
+## 0.0.15
+
+### Patch Changes
+
+- f5e3d76: build project before zipping dist folder
+
 ## 0.0.14
 
 ### Patch Changes
