@@ -1,5 +1,11 @@
 # github-bookmark
 
+## 0.0.22
+
+### Patch Changes
+
+- f0b8100: fix error
+
 ## 0.0.21
 
 ### Patch Changes
