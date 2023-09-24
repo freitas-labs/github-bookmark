@@ -1,5 +1,11 @@
 # github-bookmark
 
+## 0.0.18
+
+### Patch Changes
+
+- 83929b5: fix error
+
 ## 0.0.17
 
 ### Patch Changes
