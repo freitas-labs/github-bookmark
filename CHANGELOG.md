@@ -1,5 +1,11 @@
 # github-bookmark
 
+## 0.0.20
+
+### Patch Changes
+
+- 57a3c82: fix error
+
 ## 0.0.19
 
 ### Patch Changes
