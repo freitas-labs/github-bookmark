@@ -32,16 +32,18 @@ jobs:
       - name: Print outputs
         uses: actions/github-script@v4
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            JSON.stringify(${{ steps.changesets.outputs }}, null, "\t");
+            console.log(JSON.stringify(${{ steps.changesets.outputs }}, null, "\t"));
 
       - name: Build project
+        if: steps.changesets.outputs.published == 'true'
         id: build-project
         run: npm run build
 
       - name: Zip dist folder
         id: zip-folder
-        if: steps.changesets.outputs.published == 'true' && steps.build-project.outcome == 'success'
+        if: steps.build-project.outcome == 'success'
         uses: vimtor/action-zip@v1
         with:
           files: dist
@@ -49,7 +51,24 @@ jobs:
 
       - name: After Zipping dist folder
         if: steps.zip-folder.outcome == 'success'
-        uses: actions/upload-artifact@v1
+        uses: actions/github-script@v6
         with:
-          name: my-artifact
-          path: ${{ github.workspace }}/dist.zip
+          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          script: |
+            async function getReleaseId() {
+              try {
+                const response = await github.repos.releases.latest({
+                  owner: owner,
+                  repo: repo
+                });
+
+                console.log(`Id of the latest release is ${response.data.id} was found.`);
+                return ${response.data.id}
+              } catch (error) {
+                console.error('Failed to get Id of the latest release', error);
+                throw error;
+              }
+            }
+
+            let release_id = await getReleaseId();
+            console.log(release_id)
