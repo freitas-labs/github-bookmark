@@ -49,7 +49,7 @@ jobs:
           files: dist
           dest: dist.zip
 
-      - name: After Zipping dist folder
+      - name: Upload Release Asset
         if: steps.zip-folder.outcome == 'success'
         uses: actions/github-script@v6
         with:
