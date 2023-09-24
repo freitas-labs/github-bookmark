@@ -21,13 +21,13 @@ jobs:
       - name: Install npm
         run: npm install --frozen-lockfile
 
-      - name: Create Release Pull Request or Publish
-        id: changesets
-        uses: changesets/action@v1
-        with:
-          publish: bash scripts/release.sh
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Create Release Pull Request or Publish
+      #   id: changesets
+      #   uses: changesets/action@v1
+      #   with:
+      #     publish: bash scripts/release.sh
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build project
         if: steps.changesets.outputs.published == 'true'
