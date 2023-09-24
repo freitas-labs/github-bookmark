@@ -63,5 +63,24 @@ jobs:
               }
             }
 
+            async function uploadReleaseAsset(release_id) {
+
+              try {
+                const response = await github.rest.repos.uploadReleaseAsset({
+                  owner: '${{ github.repository_owner }}',
+                  repo: '${{ github.event.repository.name }}'
+                  release_id: release_id,
+                  name: 'dist.zip'
+                  data: ${{ github.workspace }}/dist.zip
+                });
+
+                console.log(`Uploaded asset to release ${release_id}.`);
+              } catch (error) {
+                console.error(`Failed to upload asset to release ${release_id}`, error);
+                throw error;
+              }
+            }
+
             let release_id = await getReleaseId();
-            console.log(release_id)
+            console.log("Release id: $release_id")
+            await uploadReleaseAsset(release_id);
