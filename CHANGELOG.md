@@ -1,5 +1,11 @@
 # github-bookmark
 
+## 0.0.24
+
+### Patch Changes
+
+- d87735a: fix error
+
 ## 0.0.23
 
 ### Patch Changes
