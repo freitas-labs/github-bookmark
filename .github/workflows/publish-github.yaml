@@ -35,13 +35,13 @@ jobs:
 
       - name: Zip dist file
         if: steps.changesets.outputs.published == 'true'
-        uses: vimtor/action-zip@v1.1
+        uses: vimtor/action-zip@v1
         with:
           files: dist
           dest: dist.zip
 
       - name: After Zipping dist file
-        uses: actions/upload-artifact@v1.1
+        uses: actions/upload-artifact@v1
         with:
           name: my-artifact
           path: ${{ github.workspace }}/dist.zip
