@@ -46,7 +46,7 @@ jobs:
         if: steps.zip-folder.outcome == 'success'
         uses: actions/upload-artifact@v1
         with:
-          name: dist.zip
+          name: dist-action
           path: ${{ github.workspace }}/dist.zip
 
       - name: Upload Release Asset
@@ -78,7 +78,7 @@ jobs:
                   repo: '${{ github.event.repository.name }}',
                   release_id: release_id,
                   name: 'dist.zip',
-                  data: '@${{ github.workspace }}/dist.zip'
+                  data: '@${{ github.workspace }}/dist'
                 });
 
                 console.log(`Uploaded asset to release ${release_id}.`);
